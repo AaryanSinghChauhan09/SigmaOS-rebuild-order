@@ -1,16 +1,16 @@
 [component]
 name = "SigmaOS-rebuild-order"
 tier = 2
-stability = "scaffold"
+stability = "beta"
 language = "rust"
-description = "SigmaOS rebuild-order component (Arch Linux inspired)"
-upstream = []
+description = "SigmaOS rebuild-order component — Arch package rebuild order from pacman syncdbs, reverse-dep graph + DFS post-order (archlinux/arch-rebuild-order inspired)"
+upstream = ["https://github.com/archlinux/arch-rebuild-order"]
 
 [contract]
-provides = ["component"]
+provides = ["rebuild-order", "syncdb-parser", "dep-graph"]
 depends_on = []
 
 [maturity]
 status = "Implemented"
-test_evidence = "Compiles and passes AAA unit tests"
-next_milestone = "Hardware and runtime integration"
+test_evidence = "cargo test: 10 tests pass (chains, diamonds, provides, makedepends, syncdb tar parsing)"
+next_milestone = "DOT graph export wiring in CLI; live syncdb verification"
